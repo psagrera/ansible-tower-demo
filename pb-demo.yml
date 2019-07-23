@@ -1,0 +1,39 @@
+--- 
+- name: Junos Snapshot Administrator tests
+  hosts: VMX
+  roles:
+    - Juniper.junos
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - name: Take a pre_maintenance snapshot of core KPIs
+      juniper_junos_jsnapy:
+        action: "snap_pre"
+        user: "lab"
+        password: "lab123"
+        dir: "/etc/jsnapy/testfiles"
+        config_file: "/etc/jsnapy/config/config_check.yml"
+    
+    - name: Take a post_maintenance snapshot of of core KPIs
+      juniper_junos_jsnapy:
+        action: "snap_post"
+        user: "lab"
+        password: "lab123"
+        dir: "/etc/jsnapy/testfiles"
+        config_file: "/etc/jsnapy/config/config_check.yml"
+
+    - name: Take a snapcheck of core KPIs
+      juniper_junos_jsnapy:
+        action: "snapcheck"
+        user: "lab"
+        password: "lab123"
+        dir: "/etc/jsnapy/testfiles"
+        config_file: "/etc/jsnapy/config/config_check.yml"
+      register: test_result
+
+    - name: Check JSNAPy tests results
+      assert:
+        that:
+        - "test_result.passPercentage == 100"
+        msg: "jsnapy test on {{ inventory_hostname }} failed"
