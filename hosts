@@ -11,8 +11,6 @@
 # Ex 1: Ungrouped hosts, specify before any group headers.
 
 ## green.example.com
-#ll:children]
-VMX
 
 [VMX]
 VMX1  junos_host=10.102.179.3
