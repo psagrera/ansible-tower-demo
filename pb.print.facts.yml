@@ -9,8 +9,8 @@
   vars:
     credentials:
       host: "{{ inventory_hostname }}"
-      username: "{{ ansible_user }}"
-      password: "{{ ansible_ssh_pass }}"
+      username: "lab"
+      password: "lab123"
 
   tasks:
     - name: Retrieve facts from devices running Junos OS  
