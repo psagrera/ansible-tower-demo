@@ -1,6 +1,6 @@
 ---
  - name: Get Facts
-   hosts: JUNOS
+   hosts: junos 
    connection: local
    gather_facts: no
    tasks:
