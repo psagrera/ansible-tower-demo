@@ -13,7 +13,7 @@
 ## green.example.com
 
 [VMX]
-VMX1  junos_host=10.102.179.3
+10.102.179.3
 # blue.example.com
 ## 192.168.100.1
 ## 192.168.100.10
