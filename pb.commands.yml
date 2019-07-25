@@ -11,7 +11,7 @@
       host: "{{ inventory_hostname }}"
       username: "lab"
       password: "lab123"
-      
+
   tasks:
     - name: Execute single "show version" command.
       juniper_junos_command:
@@ -29,3 +29,7 @@
           - "show system uptime"
           - "show interface terse"
       register: response
+
+    - name: Print the command output
+      debug:
+        var: response.stdout
